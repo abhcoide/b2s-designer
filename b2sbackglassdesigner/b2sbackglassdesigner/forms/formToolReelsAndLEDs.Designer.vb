@@ -37,6 +37,7 @@ Partial Class formToolReelsAndLEDs
         Me.lblSize = New System.Windows.Forms.Label()
         Me.lblSpacing = New System.Windows.Forms.Label()
         Me.numericSpacing = New System.Windows.Forms.NumericUpDown()
+        Me.numericSpacing.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.B2SLine3 = New B2SBackglassDesigner.B2SLine()
         Me.numericDigits = New System.Windows.Forms.NumericUpDown()
         Me.txtID = New System.Windows.Forms.TextBox()
@@ -132,6 +133,7 @@ Partial Class formToolReelsAndLEDs
         '
         'numericSpacing
         '
+        Me.numericSpacing.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         resources.ApplyResources(Me.numericSpacing, "numericSpacing")
         Me.numericSpacing.Name = "numericSpacing"
         '

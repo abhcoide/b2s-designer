@@ -303,6 +303,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Classes\Base classes\formBase.resx">
+      <DependentUpon>formBase.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formDesigner.resx">
       <DependentUpon>formDesigner.vb</DependentUpon>
       <SubType>Designer</SubType>
