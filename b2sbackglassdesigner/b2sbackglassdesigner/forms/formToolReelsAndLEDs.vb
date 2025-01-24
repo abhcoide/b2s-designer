@@ -148,6 +148,31 @@ Public Class formToolReelsAndLEDs
             End If
         End If
     End Sub
+
+    Private Sub lvReelsAndLEDs_KeyDown(sender As Object, e As KeyEventArgs) Handles lvReelsAndLEDs.KeyDown
+        ' Check if the Delete key was pressed
+        If e.KeyCode = Keys.Delete Then
+            ' Ensure at least one item is selected
+            If lvReelsAndLEDs.SelectedItems.Count > 0 Then
+                ' Confirm deletion
+                Dim confirmResult As DialogResult = MessageBox.Show("Are you sure you want to delete the selected reel(s)?",
+                                                                "Confirm Delete",
+                                                                MessageBoxButtons.YesNo,
+                                                                MessageBoxIcon.Warning)
+                If confirmResult = DialogResult.Yes Then
+                    ' Remove each selected item
+                    For Each item As ListViewItem In lvReelsAndLEDs.SelectedItems
+                        lvReelsAndLEDs.Items.Remove(item)
+                        ' TODO: Add code here to remove the associated reel from the backend data
+                    Next
+                End If
+            Else
+                MessageBox.Show("No reel is selected to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        End If
+    End Sub
+
+
     Private Sub Dream7_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkDream7.CheckedChanged
         RaiseEvent DataChanged(Me, New ScoreEventArgs(eScoreDataType.UseDream7LEDs, chkDream7.Checked))
     End Sub
