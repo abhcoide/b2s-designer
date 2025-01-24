@@ -149,21 +149,6 @@ Public Class formToolReelsAndLEDs
         End If
     End Sub
 
-    Private Sub lvReelsAndLEDs_KeyDown(sender As Object, e As KeyEventArgs) Handles lvReelsAndLEDs.KeyDown
-        ' Check if the Delete key was pressed
-        If e.KeyCode = Keys.Delete Then
-            ' Ensure at least one item is selected
-            If lvReelsAndLEDs.SelectedItems.Count > 0 Then
-                ' Remove each selected item immediately
-                For Each item As ListViewItem In lvReelsAndLEDs.SelectedItems
-                    lvReelsAndLEDs.Items.Remove(item)
-                Next
-            End If
-        End If
-    End Sub
-
-
-
     Private Sub Dream7_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkDream7.CheckedChanged
         RaiseEvent DataChanged(Me, New ScoreEventArgs(eScoreDataType.UseDream7LEDs, chkDream7.Checked))
     End Sub

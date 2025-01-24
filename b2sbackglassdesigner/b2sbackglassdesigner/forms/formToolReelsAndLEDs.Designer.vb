@@ -69,7 +69,6 @@ Partial Class formToolReelsAndLEDs
         Me.lvReelsAndLEDs.Name = "lvReelsAndLEDs"
         Me.lvReelsAndLEDs.SmallImageList = Me.ilReelsAndLEDs
         Me.lvReelsAndLEDs.UseCompatibleStateImageBehavior = False
-        AddHandler Me.lvReelsAndLEDs.KeyDown, AddressOf lvReelsAndLEDs_KeyDown
 
 
         '
