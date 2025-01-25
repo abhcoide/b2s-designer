@@ -410,4 +410,30 @@ Public Class formReelType
         End Try
     End Sub
 
+    Private Sub btnExportCredit_Click(sender As Object, e As EventArgs) Handles btnExportCredit.Click
+        Try
+            ' Ensure a credit reel is selected
+            If lvEMCreditReels.SelectedItems.Count = 0 Then
+                MessageBox.Show("Please select a credit reel to export.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return
+            End If
+
+            ' Get the selected credit reel name and index
+            Dim selectedCreditReelName As String = lvEMCreditReels.SelectedItems(0).Text
+            Dim selectedCreditReelIndex As Integer = lvEMCreditReels.SelectedIndices(0)
+
+            ' Path to the XML file
+            Dim xmlPath As String = "Projects\B2SBackglassDesigner.Import.xml"
+
+            ' Call the export function
+            If Not ExportCreditReelImages(selectedCreditReelName, selectedCreditReelIndex, xmlPath) Then
+                MessageBox.Show("Failed to export the selected credit reel.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Catch ex As Exception
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+
+
 End Class

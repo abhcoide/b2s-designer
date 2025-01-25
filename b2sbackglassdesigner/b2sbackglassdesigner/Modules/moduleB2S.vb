@@ -599,6 +599,87 @@ Module moduleB2S
         End Try
     End Function
 
+    Public DefaultCreditReels As String() = {"EMR_CT1_00", "EMR_CT2_00", "EMR_CT3_00"}
+
+    Public Function ExportCreditReelImages(selectedCreditReelName As String, selectedCreditReelIndex As Integer, xmlPath As String) As Boolean
+        Try
+            ' Check if the selected credit reel is hardcoded
+            If selectedCreditReelIndex < DefaultCreditReels.Length Then
+                ' Export hardcoded credit reel images
+                Dim reelBaseName As String = DefaultCreditReels(selectedCreditReelIndex)
+                Dim outputDirectory As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Exports", selectedCreditReelName)
+
+                If Not Directory.Exists(outputDirectory) Then
+                    Directory.CreateDirectory(outputDirectory)
+                End If
+
+                Dim success As Boolean = False
+                For i As Integer = 0 To 9 ' Loop through images 0 to 9
+                    Dim resourceName As String = $"{reelBaseName.Replace("_00", "")}_{i:D2}" ' e.g., EMR_CT1_00 to EMR_CT1_01
+                    Dim reelImage As Object = My.Resources.ResourceManager.GetObject(resourceName)
+
+                    If reelImage IsNot Nothing AndAlso TypeOf reelImage Is Image Then
+                        Dim outputFileName As String = Path.Combine(outputDirectory, $"{selectedCreditReelName}_Image{i}.png")
+                        CType(reelImage, Image).Save(outputFileName, Imaging.ImageFormat.Png)
+                        success = True
+                    End If
+                Next
+
+                If success Then
+                    MessageBox.Show($"Export completed successfully! Files saved to: {outputDirectory}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Return True
+                Else
+                    MessageBox.Show($"No images found for hardcoded credit reel: {selectedCreditReelName}.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return False
+                End If
+            Else
+                ' Handle imported credit reels (XML-based)
+                Dim doc As New XmlDocument()
+                doc.Load(xmlPath)
+
+                ' Locate the CreditReelSets node
+                Dim creditReelSetsNode As XmlNode = doc.SelectSingleNode("//CreditReelSets")
+                If creditReelSetsNode Is Nothing Then
+                    MessageBox.Show("CreditReelSets node not found in the XML file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return False
+                End If
+
+                ' Collect imported credit reels and adjust the index
+                Dim creditReelNodes As XmlNodeList = creditReelSetsNode.ChildNodes
+                Dim adjustedIndex As Integer = selectedCreditReelIndex - DefaultCreditReels.Length
+
+                If adjustedIndex < 0 OrElse adjustedIndex >= creditReelNodes.Count Then
+                    MessageBox.Show($"No data found for the selected credit reel: {selectedCreditReelName}. Adjusted Index: {adjustedIndex}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return False
+                End If
+
+                ' Export images from XML
+                Dim matchingCreditReelNode As XmlNode = creditReelNodes(adjustedIndex)
+                Dim outputDirectory As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Exports", selectedCreditReelName)
+
+                If Not Directory.Exists(outputDirectory) Then
+                    Directory.CreateDirectory(outputDirectory)
+                End If
+
+                Dim imageIndex As Integer = 1
+                For Each imageNode As XmlNode In matchingCreditReelNode.ChildNodes
+                    Dim base64Value As String = imageNode.Attributes("Value")?.Value
+                    If Not String.IsNullOrEmpty(base64Value) Then
+                        Dim imageBytes As Byte() = Convert.FromBase64String(base64Value)
+                        Dim outputFileName As String = Path.Combine(outputDirectory, $"{selectedCreditReelName}_Image{imageIndex}.png")
+                        File.WriteAllBytes(outputFileName, imageBytes)
+                        imageIndex += 1
+                    End If
+                Next
+
+                MessageBox.Show($"Export completed successfully! Files saved to: {outputDirectory}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return True
+            End If
+        Catch ex As Exception
+            MessageBox.Show($"Error exporting credit reel images: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End Try
+    End Function
 
 
 End Module

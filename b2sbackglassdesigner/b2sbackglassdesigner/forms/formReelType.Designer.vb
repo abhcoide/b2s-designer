@@ -70,6 +70,7 @@ Partial Class formReelType
         Me.Dream7LED10 = New B2SBackglassDesigner.B2SDream7LEDPanel()
         Me.Dream7LED08 = New B2SBackglassDesigner.B2SDream7LEDPanel()
         Me.B2SColorBarLEDs = New B2SBackglassDesigner.B2SColorBar()
+        Me.btnExportCredit = New System.Windows.Forms.Button()
         Me.GroupBoxImages.SuspendLayout()
         CType(Me.numIntermediateCount, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numRollingInterval, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -97,6 +98,7 @@ Partial Class formReelType
         'GroupBoxImages
         '
         resources.ApplyResources(Me.GroupBoxImages, "GroupBoxImages")
+        Me.GroupBoxImages.Controls.Add(Me.btnExportCredit)
         Me.GroupBoxImages.Controls.Add(Me.btnExportLED)
         Me.GroupBoxImages.Controls.Add(Me.btnExportReel)
         Me.GroupBoxImages.Controls.Add(Me.lblMS)
@@ -413,6 +415,12 @@ Partial Class formReelType
         Me.B2SColorBarLEDs.CurrentColor = System.Drawing.Color.Black
         Me.B2SColorBarLEDs.Name = "B2SColorBarLEDs"
         '
+        'btnExportCredit
+        '
+        resources.ApplyResources(Me.btnExportCredit, "btnExportCredit")
+        Me.btnExportCredit.Name = "btnExportCredit"
+        Me.btnExportCredit.UseVisualStyleBackColor = True
+        '
         'formReelType
         '
         Me.AcceptButton = Me.btnOk
@@ -487,4 +495,5 @@ Partial Class formReelType
     Friend WithEvents lblMS As System.Windows.Forms.Label
     Friend WithEvents btnExportReel As Button
     Friend WithEvents btnExportLED As Button
+    Friend WithEvents btnExportCredit As Button
 End Class
