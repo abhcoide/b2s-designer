@@ -1,3 +1,7 @@
+# Unofficial Improvements
+
+I forked this for personal use.  This version contains a few bug fixes and quality of life improvements.
+
 # B2S (Backglass 2nd Screen) Designer
 
 It allows you to edit and create directB2S backglasses for the [B2S.Server](https://github.com/vpinball/b2s-backglass) using a "WYSIWYG" editor.
