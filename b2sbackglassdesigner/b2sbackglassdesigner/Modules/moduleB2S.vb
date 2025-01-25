@@ -1,4 +1,6 @@
 ﻿Imports System.Text
+Imports System.Xml
+Imports System.IO
 
 Module moduleB2S
 
@@ -436,5 +438,88 @@ Module moduleB2S
         Next
         Return ret
     End Function
+
+
+    Public Function ExportReelImages(selectedReelName As String, selectedReelIndex As Integer, xmlPath As String) As Boolean
+        Try
+            ' Check if the selected reel is part of DefaultEMReels
+            If selectedReelIndex < DefaultEMReels.Length Then
+                ' Export hard-coded reel (DefaultEMReels)
+                Dim reelBaseName As String = $"EMR_T{selectedReelIndex + 1}_" ' Base name for hardcoded reels, e.g., EMR_T1_
+                Dim outputDirectory As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Exports", selectedReelName)
+
+                If Not Directory.Exists(outputDirectory) Then
+                    Directory.CreateDirectory(outputDirectory)
+                End If
+
+                Dim success As Boolean = False
+                For i As Integer = 0 To 9 ' Loop through images 0 to 9
+                    Dim resourceName As String = $"{reelBaseName}{i}" ' e.g., EMR_T1_0, EMR_T1_1
+                    Dim reelImage As Object = My.Resources.ResourceManager.GetObject(resourceName)
+
+                    If reelImage IsNot Nothing AndAlso TypeOf reelImage Is Image Then
+                        Dim outputFileName As String = Path.Combine(outputDirectory, $"{selectedReelName}_Image{i}.png")
+                        CType(reelImage, Image).Save(outputFileName, Imaging.ImageFormat.Png)
+                        success = True
+                    End If
+                Next
+
+                If success Then
+                    MessageBox.Show($"Export completed successfully! Files saved to: {outputDirectory}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Return True
+                Else
+                    MessageBox.Show($"No images found for hardcoded reel: {selectedReelName}.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return False
+                End If
+            Else
+                ' Handle imported reels (XML-based)
+                Dim doc As New XmlDocument()
+                doc.Load(xmlPath)
+
+                ' Locate the ReelSets node
+                Dim reelSetsNode As XmlNode = doc.SelectSingleNode("//ReelSets")
+                If reelSetsNode Is Nothing Then
+                    MessageBox.Show("ReelSets node not found in the XML file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return False
+                End If
+
+                ' Collect imported reels and adjust the index
+                Dim reelNodes As XmlNodeList = reelSetsNode.ChildNodes
+                Dim adjustedIndex As Integer = selectedReelIndex - DefaultEMReels.Length
+
+                If adjustedIndex < 0 OrElse adjustedIndex >= reelNodes.Count Then
+                    MessageBox.Show($"No data found for the selected reel: {selectedReelName}. Adjusted Index: {adjustedIndex}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return False
+                End If
+
+                ' Export images from XML
+                Dim matchingReelNode As XmlNode = reelNodes(adjustedIndex)
+                Dim outputDirectory As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Exports", selectedReelName)
+
+                If Not Directory.Exists(outputDirectory) Then
+                    Directory.CreateDirectory(outputDirectory)
+                End If
+
+                Dim imageIndex As Integer = 1
+                For Each imageNode As XmlNode In matchingReelNode.ChildNodes
+                    Dim base64Value As String = imageNode.Attributes("Value")?.Value
+                    If Not String.IsNullOrEmpty(base64Value) Then
+                        Dim imageBytes As Byte() = Convert.FromBase64String(base64Value)
+                        Dim outputFileName As String = Path.Combine(outputDirectory, $"{selectedReelName}_Image{imageIndex}.png")
+                        File.WriteAllBytes(outputFileName, imageBytes)
+                        imageIndex += 1
+                    End If
+                Next
+
+                MessageBox.Show($"Export completed successfully! Files saved to: {outputDirectory}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return True
+            End If
+        Catch ex As Exception
+            MessageBox.Show($"Error exporting reel images: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End Try
+    End Function
+
+
 
 End Module

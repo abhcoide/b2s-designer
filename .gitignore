@@ -4,7 +4,8 @@
 
 /.vs
 /b2sbackglassdesigner/.vs/B2SBackglassDesigner
-/b2sbackglassdesigner/b2sbackglassdesigner/bin/x64/Debug
-/b2sbackglassdesigner/b2sbackglassdesigner/obj/x64/Debug
+/b2sbackglassdesigner/b2sbackglassdesigner/bin/
+/b2sbackglassdesigner/b2sbackglassdesigner/forms/*.resx
+/b2sbackglassdesigner/b2sbackglassdesigner/obj
+/b2sbackglassdesigner/b2sbackglassdesigner/classes/Base classes/*.resx
 *.resx
-

@@ -1,18 +1,22 @@
 ﻿Imports System
 Imports System.Runtime.InteropServices
+Imports System.Xml
+Imports System.IO
+Imports System.Drawing
+
 
 Public Class formReelType
 
     <DllImport("gdi32.dll")>
     Private Shared Function CreateDC(ByVal lpszDriver As String, ByVal lpszDevice As String, ByVal lpszOutput As String, ByVal lpInitData As IntPtr) As IntPtr
     End Function
-    <DllImport("gdi32.dll")> _
+    <DllImport("gdi32.dll")>
     Private Shared Function DeleteDC(ByVal hdc As IntPtr) As Boolean
     End Function
-    <DllImport("gdi32.dll")> _
+    <DllImport("gdi32.dll")>
     Private Shared Function GetPixel(ByVal hdc As IntPtr, ByVal nXPos As Integer, ByVal nYPos As Integer) As Integer
     End Function
-    <DllImport("user32.dll")> _
+    <DllImport("user32.dll")>
     Private Shared Function GetAsyncKeyState(ByVal vKey As Int32) As Short
     End Function
 
@@ -357,5 +361,33 @@ Public Class formReelType
             End If
         End If
     End Sub
+
+    Private Sub btnExportReel_Click(sender As Object, e As EventArgs) Handles btnExportReel.Click
+        Try
+            ' Ensure a reel is selected
+            If lvEMReels.SelectedItems.Count = 0 Then
+                MessageBox.Show("Please select a reel to export.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return
+            End If
+
+            ' Get the selected reel name and index
+            Dim selectedReelName As String = lvEMReels.SelectedItems(0).Text
+            Dim selectedReelIndex As Integer = lvEMReels.SelectedIndices(0) ' Index in the UI list
+
+            ' Path to the XML file
+            Dim xmlPath As String = "Projects\B2SBackglassDesigner.Import.xml"
+
+            ' Call the export function
+            If Not ExportReelImages(selectedReelName, selectedReelIndex, xmlPath) Then
+                MessageBox.Show("Failed to export the selected reel.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Catch ex As Exception
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+
+
+
 
 End Class
