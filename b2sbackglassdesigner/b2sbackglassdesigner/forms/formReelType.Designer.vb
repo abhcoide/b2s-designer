@@ -62,6 +62,7 @@ Partial Class formReelType
         Me.ilEMCeditReels = New System.Windows.Forms.ImageList(Me.components)
         Me.TimerGetColor = New System.Windows.Forms.Timer(Me.components)
         Me.btnExportReel = New System.Windows.Forms.Button()
+        Me.btnExportLED = New System.Windows.Forms.Button()
         Me.RenderedLED14 = New B2SBackglassDesigner.B2SRenderedLEDPanel()
         Me.RenderedLED08 = New B2SBackglassDesigner.B2SRenderedLEDPanel()
         Me.RenderedLED10 = New B2SBackglassDesigner.B2SRenderedLEDPanel()
@@ -96,6 +97,7 @@ Partial Class formReelType
         'GroupBoxImages
         '
         resources.ApplyResources(Me.GroupBoxImages, "GroupBoxImages")
+        Me.GroupBoxImages.Controls.Add(Me.btnExportLED)
         Me.GroupBoxImages.Controls.Add(Me.btnExportReel)
         Me.GroupBoxImages.Controls.Add(Me.lblMS)
         Me.GroupBoxImages.Controls.Add(Me.btnImportLEDs)
@@ -348,6 +350,12 @@ Partial Class formReelType
         Me.btnExportReel.Name = "btnExportReel"
         Me.btnExportReel.UseVisualStyleBackColor = True
         '
+        'btnExportLED
+        '
+        resources.ApplyResources(Me.btnExportLED, "btnExportLED")
+        Me.btnExportLED.Name = "btnExportLED"
+        Me.btnExportLED.UseVisualStyleBackColor = True
+        '
         'RenderedLED14
         '
         Me.RenderedLED14.LabelText = "14"
@@ -478,4 +486,5 @@ Partial Class formReelType
     Friend WithEvents btnImportLEDs As System.Windows.Forms.Button
     Friend WithEvents lblMS As System.Windows.Forms.Label
     Friend WithEvents btnExportReel As Button
+    Friend WithEvents btnExportLED As Button
 End Class

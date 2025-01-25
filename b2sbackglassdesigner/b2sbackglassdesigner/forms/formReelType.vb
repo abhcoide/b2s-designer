@@ -386,8 +386,28 @@ Public Class formReelType
         End Try
     End Sub
 
+    Private Sub btnExportLED_Click(sender As Object, e As EventArgs) Handles btnExportLED.Click
+        Try
+            ' Ensure an LED set is selected
+            If lvLEDs.SelectedItems.Count = 0 Then
+                MessageBox.Show("Please select an LED set to export.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return
+            End If
 
+            ' Get the selected LED name and index
+            Dim selectedLEDName As String = lvLEDs.SelectedItems(0).Text
+            Dim selectedLEDIndex As Integer = lvLEDs.SelectedIndices(0)
 
+            ' Path to the XML file
+            Dim xmlPath As String = "Projects\B2SBackglassDesigner.Import.xml"
 
+            ' Call the export function
+            If Not ExportLEDImages(selectedLEDName, selectedLEDIndex, xmlPath) Then
+                MessageBox.Show("Failed to export the selected LED set.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Catch ex As Exception
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 
 End Class

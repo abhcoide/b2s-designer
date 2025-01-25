@@ -521,5 +521,84 @@ Module moduleB2S
     End Function
 
 
+    Public DefaultLCDs As String() = {"LED", "LED_Blue"}
+
+    Public Function ExportLEDImages(selectedLEDName As String, selectedLEDIndex As Integer, xmlPath As String) As Boolean
+        Try
+            ' Check if the selected LED is part of DefaultLCDs
+            If selectedLEDIndex < DefaultLCDs.Length Then
+                ' Export hard-coded LED images (DefaultLCDs)
+                Dim ledName As String = DefaultLCDs(selectedLEDIndex)
+                Dim outputDirectory As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Exports", selectedLEDName)
+
+                If Not Directory.Exists(outputDirectory) Then
+                    Directory.CreateDirectory(outputDirectory)
+                End If
+
+                ' Loop through hardcoded LED images (e.g., LED_0, LED_1, ..., LED_9)
+                For imageIndex As Integer = 0 To 9
+                    Dim imageName As String = $"{ledName}_{imageIndex}"
+                    Dim ledImage As Image = My.Resources.ResourceManager.GetObject(imageName)
+                    If ledImage Is Nothing Then
+                        MessageBox.Show($"Image for {imageName} not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        Return False
+                    End If
+
+                    Dim outputFileName As String = Path.Combine(outputDirectory, $"{selectedLEDName}_Image{imageIndex}.png")
+                    ledImage.Save(outputFileName, Imaging.ImageFormat.Png)
+                Next
+
+                MessageBox.Show($"Export completed successfully! Files saved to: {outputDirectory}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return True
+            Else
+                ' Handle imported LEDs (XML-based)
+                Dim doc As New XmlDocument()
+                doc.Load(xmlPath)
+
+                ' Locate the LEDSets node
+                Dim ledSetsNode As XmlNode = doc.SelectSingleNode("//LEDSets")
+                If ledSetsNode Is Nothing Then
+                    MessageBox.Show("LEDSets node not found in the XML file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return False
+                End If
+
+                ' Collect imported LEDs and adjust the index
+                Dim ledNodes As XmlNodeList = ledSetsNode.ChildNodes
+                Dim adjustedIndex As Integer = selectedLEDIndex - DefaultLCDs.Length
+
+                If adjustedIndex < 0 OrElse adjustedIndex >= ledNodes.Count Then
+                    MessageBox.Show($"No data found for the selected LED: {selectedLEDName}. Adjusted Index: {adjustedIndex}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return False
+                End If
+
+                ' Export images from XML
+                Dim matchingLEDNode As XmlNode = ledNodes(adjustedIndex)
+                Dim outputDirectory As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Exports", selectedLEDName)
+
+                If Not Directory.Exists(outputDirectory) Then
+                    Directory.CreateDirectory(outputDirectory)
+                End If
+
+                Dim imageIndex As Integer = 1
+                For Each imageNode As XmlNode In matchingLEDNode.ChildNodes
+                    Dim base64Value As String = imageNode.Attributes("Value")?.Value
+                    If Not String.IsNullOrEmpty(base64Value) Then
+                        Dim imageBytes As Byte() = Convert.FromBase64String(base64Value)
+                        Dim outputFileName As String = Path.Combine(outputDirectory, $"{selectedLEDName}_Image{imageIndex}.png")
+                        File.WriteAllBytes(outputFileName, imageBytes)
+                        imageIndex += 1
+                    End If
+                Next
+
+                MessageBox.Show($"Export completed successfully! Files saved to: {outputDirectory}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return True
+            End If
+        Catch ex As Exception
+            MessageBox.Show($"Error exporting LED images: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End Try
+    End Function
+
+
 
 End Module
