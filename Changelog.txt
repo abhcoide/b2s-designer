@@ -1,3 +1,11 @@
+
+-Abhcoide Unofficial Edits -
+	- Improved reel spacing settings.  You can now go above 100 for EM reels.
+	- Added ability to export EM Reels, both hardcoded and previously imported, as PNG files.
+	- Added ability to export EM Credit Reels, both hardcoded and previously imported, as PNG files.	
+	- Added ability to export LED Reels, both hardcoded and previously imported, as PNG files.
+
+-- Official Releases -- 
 2.1.0
 - Increased Max ZOrder to 19 from 9 by jonesyUK
 - Fixed bug (Issue #13) thanks funjup for the fix!

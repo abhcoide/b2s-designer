@@ -183,6 +183,84 @@
   <data name="GroupBoxImages.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
+  <data name="btnExportCredit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>447, 230</value>
+  </data>
+  <data name="btnExportCredit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 23</value>
+  </data>
+  <data name="btnExportCredit.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="btnExportCredit.Text" xml:space="preserve">
+    <value>&amp;Export credit reel set</value>
+  </data>
+  <data name="&gt;&gt;btnExportCredit.Name" xml:space="preserve">
+    <value>btnExportCredit</value>
+  </data>
+  <data name="&gt;&gt;btnExportCredit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnExportCredit.Parent" xml:space="preserve">
+    <value>GroupBoxImages</value>
+  </data>
+  <data name="&gt;&gt;btnExportCredit.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnExportLED.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnExportLED.Location" type="System.Drawing.Point, System.Drawing">
+    <value>447, 259</value>
+  </data>
+  <data name="btnExportLED.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 23</value>
+  </data>
+  <data name="btnExportLED.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="btnExportLED.Text" xml:space="preserve">
+    <value>&amp;Export LED image set</value>
+  </data>
+  <data name="&gt;&gt;btnExportLED.Name" xml:space="preserve">
+    <value>btnExportLED</value>
+  </data>
+  <data name="&gt;&gt;btnExportLED.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnExportLED.Parent" xml:space="preserve">
+    <value>GroupBoxImages</value>
+  </data>
+  <data name="&gt;&gt;btnExportLED.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnExportReel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnExportReel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>444, 199</value>
+  </data>
+  <data name="btnExportReel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 23</value>
+  </data>
+  <data name="btnExportReel.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="btnExportReel.Text" xml:space="preserve">
+    <value>&amp;Export reel image set</value>
+  </data>
+  <data name="&gt;&gt;btnExportReel.Name" xml:space="preserve">
+    <value>btnExportReel</value>
+  </data>
+  <data name="&gt;&gt;btnExportReel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnExportReel.Parent" xml:space="preserve">
+    <value>GroupBoxImages</value>
+  </data>
+  <data name="&gt;&gt;btnExportReel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="lblMS.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
@@ -217,7 +295,7 @@
     <value>GroupBoxImages</value>
   </data>
   <data name="&gt;&gt;lblMS.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="btnImportLEDs.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -226,16 +304,16 @@
     <value>NoControl</value>
   </data>
   <data name="btnImportLEDs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>359, 255</value>
+    <value>319, 257</value>
   </data>
   <data name="btnImportLEDs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 23</value>
+    <value>119, 23</value>
   </data>
   <data name="btnImportLEDs.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
   <data name="btnImportLEDs.Text" xml:space="preserve">
-    <value>&amp;Import your own LED image set</value>
+    <value>&amp;Import LED image set</value>
   </data>
   <data name="&gt;&gt;btnImportLEDs.Name" xml:space="preserve">
     <value>btnImportLEDs</value>
@@ -247,7 +325,7 @@
     <value>GroupBoxImages</value>
   </data>
   <data name="&gt;&gt;btnImportLEDs.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="cmbRollingDirection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -277,7 +355,7 @@
     <value>GroupBoxImages</value>
   </data>
   <data name="&gt;&gt;cmbRollingDirection.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="lblRollingDirection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -310,7 +388,7 @@
     <value>GroupBoxImages</value>
   </data>
   <data name="&gt;&gt;lblRollingDirection.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="numIntermediateCount.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -334,7 +412,7 @@
     <value>GroupBoxImages</value>
   </data>
   <data name="&gt;&gt;numIntermediateCount.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="lblIntermediateCount.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -367,7 +445,7 @@
     <value>GroupBoxImages</value>
   </data>
   <data name="&gt;&gt;lblIntermediateCount.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="numRollingInterval.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -391,7 +469,7 @@
     <value>GroupBoxImages</value>
   </data>
   <data name="&gt;&gt;numRollingInterval.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="lblRollingInterval.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -424,7 +502,7 @@
     <value>GroupBoxImages</value>
   </data>
   <data name="&gt;&gt;lblRollingInterval.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="lvEMCreditReels.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Right</value>
@@ -448,7 +526,7 @@
     <value>GroupBoxImages</value>
   </data>
   <data name="&gt;&gt;lvEMCreditReels.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="lvLEDs.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Right</value>
@@ -472,7 +550,7 @@
     <value>GroupBoxImages</value>
   </data>
   <data name="&gt;&gt;lvLEDs.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="btnImportCreditReels.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -481,16 +559,16 @@
     <value>NoControl</value>
   </data>
   <data name="btnImportCreditReels.Location" type="System.Drawing.Point, System.Drawing">
-    <value>358, 228</value>
+    <value>319, 228</value>
   </data>
   <data name="btnImportCreditReels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 23</value>
+    <value>119, 23</value>
   </data>
   <data name="btnImportCreditReels.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
   <data name="btnImportCreditReels.Text" xml:space="preserve">
-    <value>Import your own &amp;credit reel image set</value>
+    <value>&amp;Import credit reel set</value>
   </data>
   <data name="&gt;&gt;btnImportCreditReels.Name" xml:space="preserve">
     <value>btnImportCreditReels</value>
@@ -502,7 +580,7 @@
     <value>GroupBoxImages</value>
   </data>
   <data name="&gt;&gt;btnImportCreditReels.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="btnImportReels.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -511,16 +589,16 @@
     <value>NoControl</value>
   </data>
   <data name="btnImportReels.Location" type="System.Drawing.Point, System.Drawing">
-    <value>358, 201</value>
+    <value>317, 199</value>
   </data>
   <data name="btnImportReels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 23</value>
+    <value>121, 23</value>
   </data>
   <data name="btnImportReels.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
   <data name="btnImportReels.Text" xml:space="preserve">
-    <value>&amp;Import your own reel image set</value>
+    <value>&amp;Import reel image set</value>
   </data>
   <data name="&gt;&gt;btnImportReels.Name" xml:space="preserve">
     <value>btnImportReels</value>
@@ -532,7 +610,7 @@
     <value>GroupBoxImages</value>
   </data>
   <data name="&gt;&gt;btnImportReels.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>14</value>
   </data>
   <data name="lblInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -563,7 +641,7 @@ Please notice, for an import of a reel or LED image set you have to import exact
     <value>GroupBoxImages</value>
   </data>
   <data name="&gt;&gt;lblInfo.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>15</value>
   </data>
   <data name="lvEMReels.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -587,7 +665,7 @@ Please notice, for an import of a reel or LED image set you have to import exact
     <value>GroupBoxImages</value>
   </data>
   <data name="&gt;&gt;lvEMReels.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>16</value>
   </data>
   <data name="GroupBoxImages.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 249</value>
@@ -698,7 +776,7 @@ Please notice, for an import of a reel or LED image set you have to import exact
     <value>RenderedLED14</value>
   </data>
   <data name="&gt;&gt;RenderedLED14.Type" xml:space="preserve">
-    <value>B2SBackglassDesigner.B2SRenderedLEDPanel, B2SBackglassDesigner, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>B2SBackglassDesigner.B2SRenderedLEDPanel, B2SBackglassDesigner, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;RenderedLED14.Parent" xml:space="preserve">
     <value>PanelRenderedLEDs</value>
@@ -722,7 +800,7 @@ Please notice, for an import of a reel or LED image set you have to import exact
     <value>RenderedLED08</value>
   </data>
   <data name="&gt;&gt;RenderedLED08.Type" xml:space="preserve">
-    <value>B2SBackglassDesigner.B2SRenderedLEDPanel, B2SBackglassDesigner, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>B2SBackglassDesigner.B2SRenderedLEDPanel, B2SBackglassDesigner, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;RenderedLED08.Parent" xml:space="preserve">
     <value>PanelRenderedLEDs</value>
@@ -746,7 +824,7 @@ Please notice, for an import of a reel or LED image set you have to import exact
     <value>RenderedLED10</value>
   </data>
   <data name="&gt;&gt;RenderedLED10.Type" xml:space="preserve">
-    <value>B2SBackglassDesigner.B2SRenderedLEDPanel, B2SBackglassDesigner, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>B2SBackglassDesigner.B2SRenderedLEDPanel, B2SBackglassDesigner, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;RenderedLED10.Parent" xml:space="preserve">
     <value>PanelRenderedLEDs</value>
@@ -1028,7 +1106,7 @@ Please notice, for an import of a reel or LED image set you have to import exact
     <value>Dream7LED14</value>
   </data>
   <data name="&gt;&gt;Dream7LED14.Type" xml:space="preserve">
-    <value>B2SBackglassDesigner.B2SDream7LEDPanel, B2SBackglassDesigner, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>B2SBackglassDesigner.B2SDream7LEDPanel, B2SBackglassDesigner, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Dream7LED14.Parent" xml:space="preserve">
     <value>PanelDream7LEDs</value>
@@ -1052,7 +1130,7 @@ Please notice, for an import of a reel or LED image set you have to import exact
     <value>Dream7LED10</value>
   </data>
   <data name="&gt;&gt;Dream7LED10.Type" xml:space="preserve">
-    <value>B2SBackglassDesigner.B2SDream7LEDPanel, B2SBackglassDesigner, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>B2SBackglassDesigner.B2SDream7LEDPanel, B2SBackglassDesigner, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Dream7LED10.Parent" xml:space="preserve">
     <value>PanelDream7LEDs</value>
@@ -1076,7 +1154,7 @@ Please notice, for an import of a reel or LED image set you have to import exact
     <value>Dream7LED08</value>
   </data>
   <data name="&gt;&gt;Dream7LED08.Type" xml:space="preserve">
-    <value>B2SBackglassDesigner.B2SDream7LEDPanel, B2SBackglassDesigner, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>B2SBackglassDesigner.B2SDream7LEDPanel, B2SBackglassDesigner, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Dream7LED08.Parent" xml:space="preserve">
     <value>PanelDream7LEDs</value>
@@ -1166,7 +1244,7 @@ Please notice, for an import of a reel or LED image set you have to import exact
     <value>B2SColorBarLEDs</value>
   </data>
   <data name="&gt;&gt;B2SColorBarLEDs.Type" xml:space="preserve">
-    <value>B2SBackglassDesigner.B2SColorBar, B2SBackglassDesigner, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>B2SBackglassDesigner.B2SColorBar, B2SBackglassDesigner, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;B2SColorBarLEDs.Parent" xml:space="preserve">
     <value>GroupBoxRendered</value>
@@ -1796,6 +1874,9 @@ For a little demo press one of your numeric character keys on your keyboard.</va
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
