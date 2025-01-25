@@ -262,7 +262,7 @@
     <value>B2SLine1</value>
   </data>
   <data name="&gt;&gt;B2SLine1.Type" xml:space="preserve">
-    <value>B2SBackglassDesigner.B2SLine, B2SBackglassDesigner, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>B2SBackglassDesigner.B2SLine, B2SBackglassDesigner, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;B2SLine1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -319,7 +319,7 @@
     <value>B2SLine2</value>
   </data>
   <data name="&gt;&gt;B2SLine2.Type" xml:space="preserve">
-    <value>B2SBackglassDesigner.B2SLine, B2SBackglassDesigner, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>B2SBackglassDesigner.B2SLine, B2SBackglassDesigner, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;B2SLine2.Parent" xml:space="preserve">
     <value>$this</value>
@@ -577,7 +577,7 @@
     <value>B2SLine3</value>
   </data>
   <data name="&gt;&gt;B2SLine3.Type" xml:space="preserve">
-    <value>B2SBackglassDesigner.B2SLine, B2SBackglassDesigner, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>B2SBackglassDesigner.B2SLine, B2SBackglassDesigner, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;B2SLine3.Parent" xml:space="preserve">
     <value>$this</value>
@@ -646,12 +646,15 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="cmbROMIDType.Items" xml:space="preserve">
-    <value>Lamp</value>
+    <value />
   </data>
   <data name="cmbROMIDType.Items1" xml:space="preserve">
-    <value>Solenoid</value>
+    <value>Lamp</value>
   </data>
   <data name="cmbROMIDType.Items2" xml:space="preserve">
+    <value>Solenoid</value>
+  </data>
+  <data name="cmbROMIDType.Items3" xml:space="preserve">
     <value>GI String</value>
   </data>
   <data name="cmbROMIDType.Location" type="System.Drawing.Point, System.Drawing">
@@ -1090,7 +1093,7 @@
     <value>B2SLine4</value>
   </data>
   <data name="&gt;&gt;B2SLine4.Type" xml:space="preserve">
-    <value>B2SBackglassDesigner.B2SLine, B2SBackglassDesigner, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>B2SBackglassDesigner.B2SLine, B2SBackglassDesigner, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;B2SLine4.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1135,36 +1138,39 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="cmbB2SIDType.Items" xml:space="preserve">
-    <value>Score1 Rollover</value>
+    <value />
   </data>
   <data name="cmbB2SIDType.Items1" xml:space="preserve">
-    <value>Score2 Rollover</value>
+    <value>Score1 Rollover</value>
   </data>
   <data name="cmbB2SIDType.Items2" xml:space="preserve">
-    <value>Score3 Rollover</value>
+    <value>Score2 Rollover</value>
   </data>
   <data name="cmbB2SIDType.Items3" xml:space="preserve">
-    <value>Score4 Rollover</value>
+    <value>Score3 Rollover</value>
   </data>
   <data name="cmbB2SIDType.Items4" xml:space="preserve">
-    <value>Player Up</value>
+    <value>Score4 Rollover</value>
   </data>
   <data name="cmbB2SIDType.Items5" xml:space="preserve">
-    <value>Can Play</value>
+    <value>Player Up</value>
   </data>
   <data name="cmbB2SIDType.Items6" xml:space="preserve">
-    <value>Ball In Play</value>
+    <value>Can Play</value>
   </data>
   <data name="cmbB2SIDType.Items7" xml:space="preserve">
-    <value>Tilt</value>
+    <value>Ball In Play</value>
   </data>
   <data name="cmbB2SIDType.Items8" xml:space="preserve">
-    <value>Match</value>
+    <value>Tilt</value>
   </data>
   <data name="cmbB2SIDType.Items9" xml:space="preserve">
-    <value>Game Over</value>
+    <value>Match</value>
   </data>
   <data name="cmbB2SIDType.Items10" xml:space="preserve">
+    <value>Game Over</value>
+  </data>
+  <data name="cmbB2SIDType.Items11" xml:space="preserve">
     <value>Shoot Again </value>
   </data>
   <data name="cmbB2SIDType.Location" type="System.Drawing.Point, System.Drawing">
@@ -1306,7 +1312,7 @@
     <value>B2SLine5</value>
   </data>
   <data name="&gt;&gt;B2SLine5.Type" xml:space="preserve">
-    <value>B2SBackglassDesigner.B2SLine, B2SBackglassDesigner, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>B2SBackglassDesigner.B2SLine, B2SBackglassDesigner, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;B2SLine5.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1477,7 +1483,7 @@
     <value>Tahoma, 8.25pt</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>150, 525</value>
+    <value>150, 550</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>Manual</value>
@@ -1489,6 +1495,6 @@
     <value>formToolIllumination</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>B2SBackglassDesigner.formBase, B2SBackglassDesigner, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>B2SBackglassDesigner.formBase, B2SBackglassDesigner, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

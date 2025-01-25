@@ -174,7 +174,7 @@ Partial Class formToolIllumination
         resources.ApplyResources(Me.cmbROMIDType, "cmbROMIDType")
         Me.cmbROMIDType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbROMIDType.FormattingEnabled = True
-        Me.cmbROMIDType.Items.AddRange(New Object() {Global.B2SBackglassDesigner.My.Resources.Resources.TXT_B2SIDType, resources.GetString("cmbROMIDType.Items"), resources.GetString("cmbROMIDType.Items1"), resources.GetString("cmbROMIDType.Items2")})
+        Me.cmbROMIDType.Items.AddRange(New Object() {resources.GetString("cmbROMIDType.Items"), resources.GetString("cmbROMIDType.Items1"), resources.GetString("cmbROMIDType.Items2"), resources.GetString("cmbROMIDType.Items3")})
         Me.cmbROMIDType.Name = "cmbROMIDType"
         '
         'lblRomIDType
@@ -271,7 +271,7 @@ Partial Class formToolIllumination
         resources.ApplyResources(Me.cmbB2SIDType, "cmbB2SIDType")
         Me.cmbB2SIDType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbB2SIDType.FormattingEnabled = True
-        Me.cmbB2SIDType.Items.AddRange(New Object() {Global.B2SBackglassDesigner.My.Resources.Resources.TXT_B2SIDType, resources.GetString("cmbB2SIDType.Items"), resources.GetString("cmbB2SIDType.Items1"), resources.GetString("cmbB2SIDType.Items2"), resources.GetString("cmbB2SIDType.Items3"), resources.GetString("cmbB2SIDType.Items4"), resources.GetString("cmbB2SIDType.Items5"), resources.GetString("cmbB2SIDType.Items6"), resources.GetString("cmbB2SIDType.Items7"), resources.GetString("cmbB2SIDType.Items8"), resources.GetString("cmbB2SIDType.Items9"), resources.GetString("cmbB2SIDType.Items10")})
+        Me.cmbB2SIDType.Items.AddRange(New Object() {resources.GetString("cmbB2SIDType.Items"), resources.GetString("cmbB2SIDType.Items1"), resources.GetString("cmbB2SIDType.Items2"), resources.GetString("cmbB2SIDType.Items3"), resources.GetString("cmbB2SIDType.Items4"), resources.GetString("cmbB2SIDType.Items5"), resources.GetString("cmbB2SIDType.Items6"), resources.GetString("cmbB2SIDType.Items7"), resources.GetString("cmbB2SIDType.Items8"), resources.GetString("cmbB2SIDType.Items9"), resources.GetString("cmbB2SIDType.Items10"), resources.GetString("cmbB2SIDType.Items11")})
         Me.cmbB2SIDType.Name = "cmbB2SIDType"
         '
         'lblB2SIDType
@@ -376,6 +376,7 @@ Partial Class formToolIllumination
         Me.Controls.Add(Me.cmbROMIDType)
         Me.Controls.Add(Me.txtB2SID)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
+        Me.KeyPreview = True
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "formToolIllumination"
