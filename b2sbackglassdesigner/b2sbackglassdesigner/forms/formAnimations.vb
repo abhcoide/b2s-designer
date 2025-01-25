@@ -470,4 +470,161 @@ Public Class formAnimations
         Return ret
     End Function
 
+    Private Sub btnExportAnimation_Click(sender As Object, e As EventArgs) Handles btnExportAnimation.Click
+        ' Ensure an animation is selected
+        If currentAnimationHeader IsNot Nothing Then
+            Using saveDialog As New SaveFileDialog()
+                saveDialog.Filter = "XML Files (*.xml)|*.xml"
+                saveDialog.Title = "Export Animation"
+                saveDialog.FileName = currentAnimationHeader.Name & ".xml"
+
+                If saveDialog.ShowDialog() = DialogResult.OK Then
+                    Try
+                        ' Export only the selected animation to XML
+                        ExportSelectedAnimationToXML(currentAnimationHeader, saveDialog.FileName)
+                        MessageBox.Show("Animation exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Catch ex As Exception
+                        MessageBox.Show($"Failed to export animation: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+                End If
+            End Using
+        Else
+            MessageBox.Show("Please select an animation to export.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+    End Sub
+
+
+    Private Sub ExportSelectedAnimationToXML(animationHeader As Animation.AnimationHeader, filePath As String)
+        Dim xmlDoc As New Xml.XmlDocument()
+        Dim animationsNode As Xml.XmlElement = xmlDoc.CreateElement("Animations")
+        xmlDoc.AppendChild(animationsNode)
+
+        ' Create the Animation node with attributes
+        Dim animationNode As Xml.XmlElement = xmlDoc.CreateElement("Animation")
+        animationNode.SetAttribute("Name", animationHeader.Name)
+        animationNode.SetAttribute("DualMode", animationHeader.DualMode.ToString())
+        animationNode.SetAttribute("Interval", animationHeader.Interval.ToString())
+        animationNode.SetAttribute("Loops", animationHeader.Loops.ToString())
+        animationNode.SetAttribute("IDJoin", If(String.IsNullOrEmpty(animationHeader.IDJoin), "", animationHeader.IDJoin))
+        animationNode.SetAttribute("StartAnimationAtBackglassStartup", animationHeader.StartAnimationAtBackglassStartup.ToString())
+        animationNode.SetAttribute("LightsStateAtAnimationStart", animationHeader.LightsStateAtAnimationStart.ToString())
+        animationNode.SetAttribute("LightsStateAtAnimationEnd", animationHeader.LightsStateAtAnimationEnd.ToString())
+        animationNode.SetAttribute("AnimationStopBehaviour", animationHeader.AnimationStopBehaviour.ToString())
+        animationNode.SetAttribute("LockInvolvedLamps", animationHeader.LockInvolvedLamps.ToString())
+        animationNode.SetAttribute("HideScoreDisplays", animationHeader.HideScoreDisplays.ToString())
+        animationNode.SetAttribute("BringToFront", animationHeader.BringToFront.ToString())
+
+        ' Add Animation Steps as child nodes
+        For Each stepItem As Animation.AnimationStep In animationHeader.AnimationSteps
+            Dim stepNode As Xml.XmlElement = xmlDoc.CreateElement("AnimationStep")
+            stepNode.SetAttribute("Step", stepItem.Step.ToString())
+            stepNode.SetAttribute("On", stepItem.On)
+            stepNode.SetAttribute("WaitLoopsAfterOn", stepItem.WaitLoopsAfterOn.ToString())
+            stepNode.SetAttribute("Off", stepItem.Off)
+            stepNode.SetAttribute("WaitLoopsAfterOff", stepItem.WaitLoopsAfterOff.ToString())
+            animationNode.AppendChild(stepNode)
+        Next
+
+        ' Append the animation node to the XML structure
+        animationsNode.AppendChild(animationNode)
+
+        ' Save the XML to the specified file path
+        xmlDoc.Save(filePath)
+    End Sub
+
+    Private Sub btnImportAnimation_Click(sender As Object, e As EventArgs) Handles btnImportAnimation.Click
+        Using openDialog As New OpenFileDialog()
+            openDialog.Filter = "XML Files (*.xml)|*.xml"
+            openDialog.Title = "Import Animation"
+
+            If openDialog.ShowDialog() = DialogResult.OK Then
+                Try
+                    ' Check and import the animation
+                    Dim animations As List(Of Animation.AnimationHeader) = ImportAnimationFromXML(openDialog.FileName)
+                    If animations IsNot Nothing AndAlso animations.Any() Then
+                        For Each animation As Animation.AnimationHeader In animations
+                            Backglass.currentAnimations.Add(animation)
+                        Next
+                        PopulateAnimations() ' Refresh the UI with the imported animations
+                        MessageBox.Show("Animation imported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Else
+                        MessageBox.Show("No valid animations were found in the selected file.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    End If
+                Catch ex As Exception
+                    MessageBox.Show($"No valid animations were found in the selected file. Failed to import: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            End If
+        End Using
+    End Sub
+
+    Private Function ImportAnimationFromXML(filePath As String) As List(Of Animation.AnimationHeader)
+        Dim importedAnimations As New List(Of Animation.AnimationHeader)
+
+        ' Load and validate the XML file
+        Dim xmlDoc As New Xml.XmlDocument()
+        xmlDoc.Load(filePath)
+
+        ' Validate the root element
+        If xmlDoc.DocumentElement Is Nothing OrElse xmlDoc.DocumentElement.Name <> "Animations" Then
+            Throw New Exception("The file does not have a valid <Animations> root element.")
+        End If
+
+        ' Iterate through each <Animation> node
+        For Each animationNode As Xml.XmlNode In xmlDoc.DocumentElement.SelectNodes("Animation")
+            Try
+                Dim animation As New Animation.AnimationHeader()
+
+                ' Safely read attributes
+                animation.Name = If(animationNode.Attributes("Name")?.Value, String.Empty)
+                animation.DualMode = SafeParseInt(animationNode.Attributes("DualMode")?.Value, 0)
+                animation.Interval = SafeParseInt(animationNode.Attributes("Interval")?.Value, 0)
+                animation.Loops = SafeParseInt(animationNode.Attributes("Loops")?.Value, 0)
+                animation.IDJoin = If(animationNode.Attributes("IDJoin")?.Value, String.Empty)
+                animation.StartAnimationAtBackglassStartup = SafeParseBool(animationNode.Attributes("StartAnimationAtBackglassStartup")?.Value, False)
+                animation.LightsStateAtAnimationStart = SafeParseInt(animationNode.Attributes("LightsStateAtAnimationStart")?.Value, 0)
+                animation.LightsStateAtAnimationEnd = SafeParseInt(animationNode.Attributes("LightsStateAtAnimationEnd")?.Value, 0)
+                animation.AnimationStopBehaviour = SafeParseInt(animationNode.Attributes("AnimationStopBehaviour")?.Value, 0)
+                animation.LockInvolvedLamps = SafeParseBool(animationNode.Attributes("LockInvolvedLamps")?.Value, False)
+                animation.HideScoreDisplays = SafeParseBool(animationNode.Attributes("HideScoreDisplays")?.Value, False)
+                animation.BringToFront = SafeParseBool(animationNode.Attributes("BringToFront")?.Value, False)
+
+                ' Read animation steps
+                For Each stepNode As Xml.XmlNode In animationNode.SelectNodes("AnimationStep")
+                    Dim stepItem As New Animation.AnimationStep()
+                    stepItem.Step = SafeParseInt(stepNode.Attributes("Step")?.Value, 0)
+                    stepItem.On = If(stepNode.Attributes("On")?.Value, String.Empty)
+                    stepItem.WaitLoopsAfterOn = SafeParseInt(stepNode.Attributes("WaitLoopsAfterOn")?.Value, 0)
+                    stepItem.Off = If(stepNode.Attributes("Off")?.Value, String.Empty)
+                    stepItem.WaitLoopsAfterOff = SafeParseInt(stepNode.Attributes("WaitLoopsAfterOff")?.Value, 0)
+                    animation.AnimationSteps.Add(stepItem)
+                Next
+
+                ' Add the animation to the list
+                importedAnimations.Add(animation)
+            Catch ex As Exception
+                ' Log the issue for debugging
+                MessageBox.Show($"Error parsing animation: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        Next
+
+        Return importedAnimations
+    End Function
+    Private Function SafeParseInt(value As String, defaultValue As Integer) As Integer
+        Dim result As Integer
+        If Integer.TryParse(value, result) Then
+            Return result
+        End If
+        Return defaultValue
+    End Function
+
+    Private Function SafeParseBool(value As String, defaultValue As Boolean) As Boolean
+        Dim result As Boolean
+        If Boolean.TryParse(value, result) Then
+            Return result
+        End If
+        Return defaultValue
+    End Function
+
+
+
 End Class

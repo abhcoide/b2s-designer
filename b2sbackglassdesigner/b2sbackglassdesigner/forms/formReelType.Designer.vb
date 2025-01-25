@@ -27,6 +27,9 @@ Partial Class formReelType
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnOk = New System.Windows.Forms.Button()
         Me.GroupBoxImages = New System.Windows.Forms.GroupBox()
+        Me.btnExportCredit = New System.Windows.Forms.Button()
+        Me.btnExportLED = New System.Windows.Forms.Button()
+        Me.btnExportReel = New System.Windows.Forms.Button()
         Me.lblMS = New System.Windows.Forms.Label()
         Me.btnImportLEDs = New System.Windows.Forms.Button()
         Me.cmbRollingDirection = New System.Windows.Forms.ComboBox()
@@ -46,6 +49,9 @@ Partial Class formReelType
         Me.btnGetColor = New System.Windows.Forms.Button()
         Me.chkUseDream7LEDs = New System.Windows.Forms.CheckBox()
         Me.PanelRenderedLEDs = New System.Windows.Forms.Panel()
+        Me.RenderedLED14 = New B2SBackglassDesigner.B2SRenderedLEDPanel()
+        Me.RenderedLED08 = New B2SBackglassDesigner.B2SRenderedLEDPanel()
+        Me.RenderedLED10 = New B2SBackglassDesigner.B2SRenderedLEDPanel()
         Me.PanelDream7LEDs = New System.Windows.Forms.Panel()
         Me.txtShear = New System.Windows.Forms.TextBox()
         Me.txtSize = New System.Windows.Forms.TextBox()
@@ -56,21 +62,15 @@ Partial Class formReelType
         Me.TrackBarThickness = New System.Windows.Forms.TrackBar()
         Me.LabelThickness = New System.Windows.Forms.Label()
         Me.TrackBarGlow = New System.Windows.Forms.TrackBar()
+        Me.Dream7LED14 = New B2SBackglassDesigner.B2SDream7LEDPanel()
+        Me.Dream7LED10 = New B2SBackglassDesigner.B2SDream7LEDPanel()
+        Me.Dream7LED08 = New B2SBackglassDesigner.B2SDream7LEDPanel()
         Me.cmbDefaultColors = New System.Windows.Forms.ComboBox()
+        Me.B2SColorBarLEDs = New B2SBackglassDesigner.B2SColorBar()
         Me.lblInfo2 = New System.Windows.Forms.Label()
         Me.ilLEDs = New System.Windows.Forms.ImageList(Me.components)
         Me.ilEMCeditReels = New System.Windows.Forms.ImageList(Me.components)
         Me.TimerGetColor = New System.Windows.Forms.Timer(Me.components)
-        Me.btnExportReel = New System.Windows.Forms.Button()
-        Me.btnExportLED = New System.Windows.Forms.Button()
-        Me.RenderedLED14 = New B2SBackglassDesigner.B2SRenderedLEDPanel()
-        Me.RenderedLED08 = New B2SBackglassDesigner.B2SRenderedLEDPanel()
-        Me.RenderedLED10 = New B2SBackglassDesigner.B2SRenderedLEDPanel()
-        Me.Dream7LED14 = New B2SBackglassDesigner.B2SDream7LEDPanel()
-        Me.Dream7LED10 = New B2SBackglassDesigner.B2SDream7LEDPanel()
-        Me.Dream7LED08 = New B2SBackglassDesigner.B2SDream7LEDPanel()
-        Me.B2SColorBarLEDs = New B2SBackglassDesigner.B2SColorBar()
-        Me.btnExportCredit = New System.Windows.Forms.Button()
         Me.GroupBoxImages.SuspendLayout()
         CType(Me.numIntermediateCount, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numRollingInterval, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -117,6 +117,24 @@ Partial Class formReelType
         Me.GroupBoxImages.Controls.Add(Me.lvEMReels)
         Me.GroupBoxImages.Name = "GroupBoxImages"
         Me.GroupBoxImages.TabStop = False
+        '
+        'btnExportCredit
+        '
+        resources.ApplyResources(Me.btnExportCredit, "btnExportCredit")
+        Me.btnExportCredit.Name = "btnExportCredit"
+        Me.btnExportCredit.UseVisualStyleBackColor = True
+        '
+        'btnExportLED
+        '
+        resources.ApplyResources(Me.btnExportLED, "btnExportLED")
+        Me.btnExportLED.Name = "btnExportLED"
+        Me.btnExportLED.UseVisualStyleBackColor = True
+        '
+        'btnExportReel
+        '
+        resources.ApplyResources(Me.btnExportReel, "btnExportReel")
+        Me.btnExportReel.Name = "btnExportReel"
+        Me.btnExportReel.UseVisualStyleBackColor = True
         '
         'lblMS
         '
@@ -247,6 +265,30 @@ Partial Class formReelType
         resources.ApplyResources(Me.PanelRenderedLEDs, "PanelRenderedLEDs")
         Me.PanelRenderedLEDs.Name = "PanelRenderedLEDs"
         '
+        'RenderedLED14
+        '
+        Me.RenderedLED14.LabelText = "14"
+        Me.RenderedLED14.LEDType = B2SBackglassDesigner.B2SRenderedLED.eLEDType.LED14
+        resources.ApplyResources(Me.RenderedLED14, "RenderedLED14")
+        Me.RenderedLED14.Name = "RenderedLED14"
+        Me.RenderedLED14.Selected = False
+        '
+        'RenderedLED08
+        '
+        Me.RenderedLED08.LabelText = "7"
+        Me.RenderedLED08.LEDType = B2SBackglassDesigner.B2SRenderedLED.eLEDType.LED8
+        resources.ApplyResources(Me.RenderedLED08, "RenderedLED08")
+        Me.RenderedLED08.Name = "RenderedLED08"
+        Me.RenderedLED08.Selected = False
+        '
+        'RenderedLED10
+        '
+        Me.RenderedLED10.LabelText = "10"
+        Me.RenderedLED10.LEDType = B2SBackglassDesigner.B2SRenderedLED.eLEDType.LED10
+        resources.ApplyResources(Me.RenderedLED10, "RenderedLED10")
+        Me.RenderedLED10.Name = "RenderedLED10"
+        Me.RenderedLED10.Selected = False
+        '
         'PanelDream7LEDs
         '
         Me.PanelDream7LEDs.Controls.Add(Me.txtShear)
@@ -317,71 +359,6 @@ Partial Class formReelType
         Me.TrackBarGlow.Maximum = 25
         Me.TrackBarGlow.Name = "TrackBarGlow"
         '
-        'cmbDefaultColors
-        '
-        resources.ApplyResources(Me.cmbDefaultColors, "cmbDefaultColors")
-        Me.cmbDefaultColors.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbDefaultColors.FormattingEnabled = True
-        Me.cmbDefaultColors.Items.AddRange(New Object() {resources.GetString("cmbDefaultColors.Items"), resources.GetString("cmbDefaultColors.Items1"), resources.GetString("cmbDefaultColors.Items2"), resources.GetString("cmbDefaultColors.Items3"), resources.GetString("cmbDefaultColors.Items4")})
-        Me.cmbDefaultColors.Name = "cmbDefaultColors"
-        '
-        'lblInfo2
-        '
-        resources.ApplyResources(Me.lblInfo2, "lblInfo2")
-        Me.lblInfo2.Name = "lblInfo2"
-        '
-        'ilLEDs
-        '
-        Me.ilLEDs.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit
-        resources.ApplyResources(Me.ilLEDs, "ilLEDs")
-        Me.ilLEDs.TransparentColor = System.Drawing.Color.Transparent
-        '
-        'ilEMCeditReels
-        '
-        Me.ilEMCeditReels.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit
-        resources.ApplyResources(Me.ilEMCeditReels, "ilEMCeditReels")
-        Me.ilEMCeditReels.TransparentColor = System.Drawing.Color.Transparent
-        '
-        'TimerGetColor
-        '
-        Me.TimerGetColor.Interval = 50
-        '
-        'btnExportReel
-        '
-        resources.ApplyResources(Me.btnExportReel, "btnExportReel")
-        Me.btnExportReel.Name = "btnExportReel"
-        Me.btnExportReel.UseVisualStyleBackColor = True
-        '
-        'btnExportLED
-        '
-        resources.ApplyResources(Me.btnExportLED, "btnExportLED")
-        Me.btnExportLED.Name = "btnExportLED"
-        Me.btnExportLED.UseVisualStyleBackColor = True
-        '
-        'RenderedLED14
-        '
-        Me.RenderedLED14.LabelText = "14"
-        Me.RenderedLED14.LEDType = B2SBackglassDesigner.B2SRenderedLED.eLEDType.LED14
-        resources.ApplyResources(Me.RenderedLED14, "RenderedLED14")
-        Me.RenderedLED14.Name = "RenderedLED14"
-        Me.RenderedLED14.Selected = False
-        '
-        'RenderedLED08
-        '
-        Me.RenderedLED08.LabelText = "7"
-        Me.RenderedLED08.LEDType = B2SBackglassDesigner.B2SRenderedLED.eLEDType.LED8
-        resources.ApplyResources(Me.RenderedLED08, "RenderedLED08")
-        Me.RenderedLED08.Name = "RenderedLED08"
-        Me.RenderedLED08.Selected = False
-        '
-        'RenderedLED10
-        '
-        Me.RenderedLED10.LabelText = "10"
-        Me.RenderedLED10.LEDType = B2SBackglassDesigner.B2SRenderedLED.eLEDType.LED10
-        resources.ApplyResources(Me.RenderedLED10, "RenderedLED10")
-        Me.RenderedLED10.Name = "RenderedLED10"
-        Me.RenderedLED10.Selected = False
-        '
         'Dream7LED14
         '
         Me.Dream7LED14.LabelText = "14"
@@ -409,17 +386,40 @@ Partial Class formReelType
         Me.Dream7LED08.Name = "Dream7LED08"
         Me.Dream7LED08.Selected = False
         '
+        'cmbDefaultColors
+        '
+        resources.ApplyResources(Me.cmbDefaultColors, "cmbDefaultColors")
+        Me.cmbDefaultColors.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbDefaultColors.FormattingEnabled = True
+        Me.cmbDefaultColors.Items.AddRange(New Object() {resources.GetString("cmbDefaultColors.Items"), resources.GetString("cmbDefaultColors.Items1"), resources.GetString("cmbDefaultColors.Items2"), resources.GetString("cmbDefaultColors.Items3"), resources.GetString("cmbDefaultColors.Items4")})
+        Me.cmbDefaultColors.Name = "cmbDefaultColors"
+        '
         'B2SColorBarLEDs
         '
         resources.ApplyResources(Me.B2SColorBarLEDs, "B2SColorBarLEDs")
         Me.B2SColorBarLEDs.CurrentColor = System.Drawing.Color.Black
         Me.B2SColorBarLEDs.Name = "B2SColorBarLEDs"
         '
-        'btnExportCredit
+        'lblInfo2
         '
-        resources.ApplyResources(Me.btnExportCredit, "btnExportCredit")
-        Me.btnExportCredit.Name = "btnExportCredit"
-        Me.btnExportCredit.UseVisualStyleBackColor = True
+        resources.ApplyResources(Me.lblInfo2, "lblInfo2")
+        Me.lblInfo2.Name = "lblInfo2"
+        '
+        'ilLEDs
+        '
+        Me.ilLEDs.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit
+        resources.ApplyResources(Me.ilLEDs, "ilLEDs")
+        Me.ilLEDs.TransparentColor = System.Drawing.Color.Transparent
+        '
+        'ilEMCeditReels
+        '
+        Me.ilEMCeditReels.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit
+        resources.ApplyResources(Me.ilEMCeditReels, "ilEMCeditReels")
+        Me.ilEMCeditReels.TransparentColor = System.Drawing.Color.Transparent
+        '
+        'TimerGetColor
+        '
+        Me.TimerGetColor.Interval = 50
         '
         'formReelType
         '

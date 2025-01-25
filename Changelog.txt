@@ -4,6 +4,7 @@
 	- Added ability to export EM Reels, both hardcoded and previously imported, as PNG files.
 	- Added ability to export EM Credit Reels, both hardcoded and previously imported, as PNG files.	
 	- Added ability to export LED Reels, both hardcoded and previously imported, as PNG files.
+	- Added ability to import and export animations.
 
 -- Official Releases -- 
 2.1.0

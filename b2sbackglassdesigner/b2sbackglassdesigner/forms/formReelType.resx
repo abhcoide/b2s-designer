@@ -184,16 +184,16 @@
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="btnExportCredit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>447, 230</value>
+    <value>444, 230</value>
   </data>
   <data name="btnExportCredit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 23</value>
+    <value>127, 23</value>
   </data>
   <data name="btnExportCredit.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
   </data>
   <data name="btnExportCredit.Text" xml:space="preserve">
-    <value>&amp;Export credit reel set</value>
+    <value>E&amp;xport Credit Reel Set</value>
   </data>
   <data name="&gt;&gt;btnExportCredit.Name" xml:space="preserve">
     <value>btnExportCredit</value>
@@ -211,16 +211,16 @@
     <value>NoControl</value>
   </data>
   <data name="btnExportLED.Location" type="System.Drawing.Point, System.Drawing">
-    <value>447, 259</value>
+    <value>444, 259</value>
   </data>
   <data name="btnExportLED.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 23</value>
+    <value>127, 23</value>
   </data>
   <data name="btnExportLED.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
   <data name="btnExportLED.Text" xml:space="preserve">
-    <value>&amp;Export LED image set</value>
+    <value>Exp&amp;ort LED Image Set</value>
   </data>
   <data name="&gt;&gt;btnExportLED.Name" xml:space="preserve">
     <value>btnExportLED</value>
@@ -247,7 +247,7 @@
     <value>16</value>
   </data>
   <data name="btnExportReel.Text" xml:space="preserve">
-    <value>&amp;Export reel image set</value>
+    <value>&amp;Export Reel Image Set</value>
   </data>
   <data name="&gt;&gt;btnExportReel.Name" xml:space="preserve">
     <value>btnExportReel</value>
@@ -304,16 +304,16 @@
     <value>NoControl</value>
   </data>
   <data name="btnImportLEDs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>319, 257</value>
+    <value>313, 257</value>
   </data>
   <data name="btnImportLEDs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 23</value>
+    <value>125, 23</value>
   </data>
   <data name="btnImportLEDs.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
   <data name="btnImportLEDs.Text" xml:space="preserve">
-    <value>&amp;Import LED image set</value>
+    <value>Im&amp;port LED Image Set</value>
   </data>
   <data name="&gt;&gt;btnImportLEDs.Name" xml:space="preserve">
     <value>btnImportLEDs</value>
@@ -559,16 +559,16 @@
     <value>NoControl</value>
   </data>
   <data name="btnImportCreditReels.Location" type="System.Drawing.Point, System.Drawing">
-    <value>319, 228</value>
+    <value>313, 228</value>
   </data>
   <data name="btnImportCreditReels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 23</value>
+    <value>125, 23</value>
   </data>
   <data name="btnImportCreditReels.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
   <data name="btnImportCreditReels.Text" xml:space="preserve">
-    <value>&amp;Import credit reel set</value>
+    <value>I&amp;mport Credit Reel Set</value>
   </data>
   <data name="&gt;&gt;btnImportCreditReels.Name" xml:space="preserve">
     <value>btnImportCreditReels</value>
@@ -589,16 +589,16 @@
     <value>NoControl</value>
   </data>
   <data name="btnImportReels.Location" type="System.Drawing.Point, System.Drawing">
-    <value>317, 199</value>
+    <value>313, 199</value>
   </data>
   <data name="btnImportReels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 23</value>
+    <value>125, 23</value>
   </data>
   <data name="btnImportReels.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
   <data name="btnImportReels.Text" xml:space="preserve">
-    <value>&amp;Import reel image set</value>
+    <value>&amp;Import Reel Image Set</value>
   </data>
   <data name="&gt;&gt;btnImportReels.Name" xml:space="preserve">
     <value>btnImportReels</value>
@@ -716,7 +716,7 @@ Please notice, for an import of a reel or LED image set you have to import exact
     <value>5</value>
   </data>
   <data name="btnGetColor.Text" xml:space="preserve">
-    <value>&amp;Get color</value>
+    <value>&amp;Get Color</value>
   </data>
   <data name="&gt;&gt;btnGetColor.Name" xml:space="preserve">
     <value>btnGetColor</value>
@@ -1874,9 +1874,6 @@ For a little demo press one of your numeric character keys on your keyboard.</va
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
 </value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
