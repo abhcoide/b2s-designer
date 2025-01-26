@@ -116,7 +116,6 @@ Module moduleB2S
             form.tsLabelMarker.Text = String.Empty
         End If
     End Sub
-
     Public Sub FillReelListView(ByVal type As eImageSetType,
                                 ByVal ilReelsAndLEDs As ImageList,
                                 ByVal lvReelsAndLEDs As ListView,
@@ -171,8 +170,22 @@ Module moduleB2S
                 End If
             Next
         End If
-
     End Sub
+
+    Public Sub UpdateSnippitImage(ByVal bulbID As Integer, ByVal encodedImage As String)
+        If XmlSettings IsNot Nothing Then
+            Dim node As XmlNode = XmlSettings.SelectSingleNode($"//Bulb[@ID='{bulbID}']")
+            If node IsNot Nothing Then
+                node.Attributes("Image").Value = encodedImage
+                XmlSettings.Save(CurrentB2S)
+            Else
+                Throw New Exception("Snippit not found in the XML.")
+            End If
+        Else
+            Throw New Exception("No XML loaded.")
+        End If
+    End Sub
+
 
     Public Function GetRenderedLEDName(ByVal reel As String) As String
         Dim ret As String = String.Empty

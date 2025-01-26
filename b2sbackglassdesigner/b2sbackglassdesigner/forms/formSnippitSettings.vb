@@ -115,4 +115,40 @@ Public Class formSnippitSettings
         cmbRotationStopBehaviour.Enabled = (cmbType.SelectedIndex = 1)
     End Sub
 
+    Private Sub btnReplaceImage_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnReplaceImage.Click
+        ' Check if there is a selected bulb
+        If Backglass.currentTabPage.Mouse.SelectedBulb IsNot Nothing Then
+            Dim selectedBulb = Backglass.currentTabPage.Mouse.SelectedBulb
+
+            Using openFileDialog As New OpenFileDialog()
+                openFileDialog.Filter = ImageFileExtensionFilter
+                openFileDialog.Title = "Select a new image for the snippit"
+
+                ' Open the file dialog to select an image
+                If openFileDialog.ShowDialog() = DialogResult.OK Then
+                    Try
+                        ' Load the new image
+                        Dim newImage As Image = Image.FromFile(openFileDialog.FileName)
+
+                        ' Assign the new image directly to the SelectedBulb
+                        selectedBulb.Image = newImage
+
+                        ' Mark the project as dirty (for saving changes)
+                        Backglass.currentData.IsDirty = True
+
+                        ' Provide visual feedback for debug - commented out because these unnecessary clicks are annoying
+                        ' MessageBox.Show("Image replaced successfully!", AppTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Catch ex As Exception
+                        MessageBox.Show($"Failed to load the selected image: {ex.Message}", AppTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+                End If
+            End Using
+        Else
+            ' No bulb selected
+            MessageBox.Show("No snippit selected to replace the image.", AppTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+    End Sub
+
+
+
 End Class
