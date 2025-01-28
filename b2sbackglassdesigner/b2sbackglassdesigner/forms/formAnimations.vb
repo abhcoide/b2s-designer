@@ -502,17 +502,17 @@ Public Class formAnimations
         ' Create the Animation node with attributes
         Dim animationNode As Xml.XmlElement = xmlDoc.CreateElement("Animation")
         animationNode.SetAttribute("Name", animationHeader.Name)
-        animationNode.SetAttribute("DualMode", animationHeader.DualMode.ToString())
+        animationNode.SetAttribute("DualMode", CType(animationHeader.DualMode, Integer).ToString()) ' Ensure numeric value is saved
         animationNode.SetAttribute("Interval", animationHeader.Interval.ToString())
         animationNode.SetAttribute("Loops", animationHeader.Loops.ToString())
         animationNode.SetAttribute("IDJoin", If(String.IsNullOrEmpty(animationHeader.IDJoin), "", animationHeader.IDJoin))
-        animationNode.SetAttribute("StartAnimationAtBackglassStartup", animationHeader.StartAnimationAtBackglassStartup.ToString())
-        animationNode.SetAttribute("LightsStateAtAnimationStart", animationHeader.LightsStateAtAnimationStart.ToString())
-        animationNode.SetAttribute("LightsStateAtAnimationEnd", animationHeader.LightsStateAtAnimationEnd.ToString())
-        animationNode.SetAttribute("AnimationStopBehaviour", animationHeader.AnimationStopBehaviour.ToString())
-        animationNode.SetAttribute("LockInvolvedLamps", animationHeader.LockInvolvedLamps.ToString())
-        animationNode.SetAttribute("HideScoreDisplays", animationHeader.HideScoreDisplays.ToString())
-        animationNode.SetAttribute("BringToFront", animationHeader.BringToFront.ToString())
+        animationNode.SetAttribute("StartAnimationAtBackglassStartup", If(animationHeader.StartAnimationAtBackglassStartup, "1", "0"))
+        animationNode.SetAttribute("LightsStateAtAnimationStart", CType(animationHeader.LightsStateAtAnimationStart, Integer).ToString())
+        animationNode.SetAttribute("LightsStateAtAnimationEnd", CType(animationHeader.LightsStateAtAnimationEnd, Integer).ToString())
+        animationNode.SetAttribute("AnimationStopBehaviour", CType(animationHeader.AnimationStopBehaviour, Integer).ToString())
+        animationNode.SetAttribute("LockInvolvedLamps", If(animationHeader.LockInvolvedLamps, "1", "0"))
+        animationNode.SetAttribute("HideScoreDisplays", If(animationHeader.HideScoreDisplays, "1", "0"))
+        animationNode.SetAttribute("BringToFront", If(animationHeader.BringToFront, "1", "0"))
 
         ' Add Animation Steps as child nodes
         For Each stepItem As Animation.AnimationStep In animationHeader.AnimationSteps
@@ -531,6 +531,7 @@ Public Class formAnimations
         ' Save the XML to the specified file path
         xmlDoc.Save(filePath)
     End Sub
+
 
     Private Sub btnImportAnimation_Click(sender As Object, e As EventArgs) Handles btnImportAnimation.Click
         Using openDialog As New OpenFileDialog()
