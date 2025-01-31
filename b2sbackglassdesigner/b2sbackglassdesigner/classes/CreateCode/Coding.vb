@@ -221,6 +221,18 @@ Public Class Coding
                 ' collect all necessary reel images
                 Dim reelimages As Generic.Dictionary(Of String, Generic.Dictionary(Of String, Image)) = New Generic.Dictionary(Of String, Generic.Dictionary(Of String, Image))
                 For Each reeltype As String In Backglass.currentData.ReelType.Split(",")
+                    reeltype = reeltype.Trim() ' Remove any spaces
+                    If String.IsNullOrEmpty(reeltype) Then Continue For ' Skip empty entries
+
+                    Debug.WriteLine($"🔍 Processing ReelType: {reeltype}")
+
+                    ' Only process ReelTypes that are correctly formatted (e.g., avoid junk data)
+                    If reeltype.StartsWith("LED") Or reeltype.StartsWith("EMR") Or reeltype.StartsWith("Rendered") Then
+                        ' Process the valid reel
+                    Else
+                        Debug.WriteLine($"⚠️ Skipping invalid ReelType: {reeltype}")
+                        Continue For
+                    End If
                     If Not String.IsNullOrEmpty(reeltype) AndAlso reeltype.Length >= 2 AndAlso Not IsReelImageRendered(reeltype) AndAlso Not IsReelImageDream7(reeltype) Then
                         Dim length As Integer = 2
                         If reeltype.Substring(reeltype.Length - 3, 1) = "_" Then length = 3
@@ -235,7 +247,15 @@ Public Class Coding
                             If reeltype.StartsWith("EMR_CT") Or InStr(reeltype, "EMR_CT") > 0 Then
                                 currentname = reelname & "_" & index.ToString("D" & 2)
                             Else
-                                currentname = reelname & "_" & If(index < 10, index.ToString("D" & length - 1), "Empty")
+                                ' Limit indexes for reels to avoid generating "Empty" entries
+                                If index >= 10 Then
+                                    Debug.WriteLine($"⚠️ Stopping generation at index {index} for reel {reelname}.")
+                                    Exit Do ' Prevents invalid "Empty" entries
+                                End If
+
+                                ' Generate the valid reel name
+                                currentname = reelname & "_" & index.ToString("D" & length - 1)
+
                             End If
                             Dim reelimage As Image = Nothing
                             If reeltype.StartsWith(ImportedStartString) Then
@@ -262,7 +282,8 @@ Public Class Coding
                                 If index < 0 Then
                                     Exit Do
                                 End If
-                            ElseIf index > 25 Then ' Safety belt, never try more than 25 rounds
+                            ElseIf index >= 10 Then ' Stop at 9 for standard reels and LEDs
+                                Debug.WriteLine($"⚠️ Exiting loop for reel {reelname} at index {index} to prevent 'Empty' generation.")
                                 Exit Do
                             Else
                                 ' do not add the empty image because it isn't needed
